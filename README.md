@@ -1,13 +1,22 @@
 # Basic Authentication Filter for Java-Servlet
 
+Very basic authentication filter. Suitable for Spring Boot REST services without servlet-engine configuration.
 
+## Configuration
 
-Basic Authentication specification:
-https://tools.ietf.org/html/rfc7617
+Filter parameters could provide credentials repository 
+ * **realm**: Realm display name
+ * **credentialsFile**: Credentials file, a properties file with user=pass. Could be external file or resource file. Checked in that order
+ * **one user-password**: Use **user** and **password** parameters
+ 
+No encription at all. Use with caution.
 
-Based in code found at:
-https://gist.github.com/neolitec/8953607
+## Documentation
 
-Tested using mockito: https://site.mockito.org/
+Basic Authentication specification: https://tools.ietf.org/html/rfc7617
 
-https://www.baeldung.com/mockito-verify
+Based in code found at: https://gist.github.com/neolitec/8953607
+
+Tested using mockito: 
+- https://site.mockito.org/
+- https://www.baeldung.com/mockito-verify

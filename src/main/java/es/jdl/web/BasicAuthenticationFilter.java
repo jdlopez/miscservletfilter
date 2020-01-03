@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -63,7 +64,10 @@ public class BasicAuthenticationFilter implements Filter {
                 }
             } else { // file not exists. try classpath
                 try {
-                    resource = getClass().getResource(credentialsFile).toURI();
+                    URL r = getClass().getResource(credentialsFile);
+                    if (r == null)
+                        throw new ServletException("Can't found credentials resource " + credentialsFile);
+                    resource = r.toURI();
                     p.load(Files.newInputStream(Paths.get(resource)));
                 } catch (URISyntaxException | IOException e) {
                     throw new ServletException(e.getMessage() + " loading credentials resource " + resource, e);
@@ -82,6 +86,8 @@ public class BasicAuthenticationFilter implements Filter {
     }
 
     private String replaceAll(String value, Properties properties) {
+        for (String k: properties.stringPropertyNames())
+            value = value.replace("${" + k + "}", properties.getProperty(k));
         return value;
     }
 
@@ -115,8 +121,15 @@ public class BasicAuthenticationFilter implements Filter {
                     } catch (UnsupportedEncodingException e) {
                         servletContext.log(e.getMessage(), e);
                         throw new Error("Couldn't retrieve authentication", e);
+                    } catch (IllegalArgumentException e) { // error in base64 encoding
+                        servletContext.log(e.getMessage(), e);
+                        unauthorized(response, "Invalid authentication token");
                     }
+                } else { // TODO: Check this -> not very clean
+                    unauthorized(response);
                 }
+            } else {
+                unauthorized(response);
             }
         } else {
             unauthorized(response);
