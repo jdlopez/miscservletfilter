@@ -7,6 +7,30 @@
     <groupId>io.github.jdlopez</groupId>
     <artifactId>basicauthfilter</artifactId>
     <version>1.0.0</version>
+    <name>Basic Authentication Filter</name>
+    <description>Servlet filter for basic authentication. Useful for developing REST services without servlet-engine integration like Spring Boot</description>
+    <url>https://github.com/jdlopez/basicauthfilter</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>JD lopez</name>
+            <url>https://github.com/jdlopez</url>
+            <organization>MySelf</organization>
+            <organizationUrl>https://github.com/jdlopez</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/jdlopez/basicauthfilter.git</url>
+    </scm>
 
     <dependencies>
         <dependency>

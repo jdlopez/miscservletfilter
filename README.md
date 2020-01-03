@@ -11,7 +11,15 @@ Filter parameters could provide credentials repository
  
 No encription at all. Use with caution.
 
-## Documentation
+Usage. Add dependency to maven pom.xml:
+
+    <dependency>
+        <groupId>io.github.jdlopez</groupId>
+        <artifactId>basicauthfilter</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+    
+## Aditional documentation
 
 Basic Authentication specification: https://tools.ietf.org/html/rfc7617
 
