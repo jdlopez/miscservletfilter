@@ -11,13 +11,31 @@ Filter parameters could provide credentials repository
  
 No encription at all. Use with caution.
 
-Usage. Add dependency to maven pom.xml:
+## Usage
+
+Add dependency to maven pom.xml:
 
     <dependency>
         <groupId>io.github.jdlopez</groupId>
         <artifactId>basicauthfilter</artifactId>
         <version>1.0.0</version>
     </dependency>
+    
+Add servlet filter and configure it. This is a spring-boot sample:
+
+    @Bean
+    public FilterRegistrationBean<es.jdl.web.BasicAuthenticationFilter> authFilter() {
+        FilterRegistrationBean<es.jdl.web.BasicAuthenticationFilter> registrationBean
+                = new FilterRegistrationBean<>();
+
+        registrationBean.setFilter(new es.jdl.web.BasicAuthenticationFilter());
+        registrationBean.addInitParameter("realm", "myapp");
+        registrationBean.addInitParameter("user", "sampleuser");
+        registrationBean.addInitParameter("password", "easypassword");
+        registrationBean.addUrlPatterns("/rest/*");
+
+        return registrationBean;
+    }
     
 ## Aditional documentation
 
