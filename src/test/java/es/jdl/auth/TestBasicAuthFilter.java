@@ -1,5 +1,6 @@
-package es.jdl.web;
+package es.jdl.auth;
 
+import es.jdl.utils.MockServletContext;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -18,7 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 
-public class TestFilter {
+public class TestBasicAuthFilter {
 
     private BasicAuthenticationFilter filter;
     private HttpServletRequest mockReq;

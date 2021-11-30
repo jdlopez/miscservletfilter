@@ -1,52 +1,54 @@
-# Basic Authentication Filter for Java-Servlet
+# Collection of Servlet Filter
 
-Very basic authentication filter. Suitable for Spring Boot REST services without servlet-engine configuration.
+A little collection of useful servlet filters:
+
+* [Google Analytics](analytics.md)
+* [Basic Authentication](auth.md)
+* [ApiKey Authentication](#apikey-authentication)
+* [Response Headers](#addheadersfilter)
 
 ## Configuration
 
-Filter parameters could provide credentials repository 
- * **realm**: Realm display name
- * **credentialsFile**: Credentials file, a properties file with user=pass. Could be external file or resource file. Checked in that order
- * **one user-password**: Use **user** and **password** parameters
- 
-No encription at all. Use with caution.
-
-## Usage
-
-Add dependency to maven pom.xml:
+First add this to your pom.xml
 
     <dependency>
         <groupId>io.github.jdlopez</groupId>
-        <artifactId>basicauthfilter</artifactId>
+        <artifactId>miscservletfilter</artifactId>
         <version>1.0.0</version>
     </dependency>
     
-Add servlet filter and configure it. This is a spring-boot sample:
+Each filter has its own configuration set. 
 
-    @Bean
-    public FilterRegistrationBean<es.jdl.web.BasicAuthenticationFilter> authFilter() {
-        FilterRegistrationBean<es.jdl.web.BasicAuthenticationFilter> registrationBean
-                = new FilterRegistrationBean<>();
+Check filter code before use:
+* es.jdl.analytics.CollectFilter
+* es.jdl.auth.BasicAuthenticationFilter
+* es.jdl.auth.HeaderAuthenticationFilter
+* es.jdl.response.AddHeadersFilter
 
-        registrationBean.setFilter(new es.jdl.web.BasicAuthenticationFilter());
-        registrationBean.addInitParameter("realm", "myapp");
-        registrationBean.addInitParameter("user", "sampleuser");
-        registrationBean.addInitParameter("password", "easypassword");
-        registrationBean.addUrlPatterns("/rest/*");
+## Common configuration
 
-        return registrationBean;
-    }
-    
-## Aditional documentation
+All filters can be configured using *configFile* initparam. It can be set with java system properties placeholders.
 
-Basic Authentication specification: https://tools.ietf.org/html/rfc7617
+Ex:
 
-Based in code found at: https://gist.github.com/neolitec/8953607
+    configFile=${user.home}/myconfig.properties
 
-Tested using mockito: 
-- https://site.mockito.org/
-- https://www.baeldung.com/mockito-verify
+## ApiKey Authentication
+
+Config content:
+
+    HeaderAuthenticationFilter.key.SOME_KEY=Response returned in header. Could be users name or whatever
+
+Prefix Api Key entries can be changed with _prefixApiKey_ parameter.
+
+## AddHeadersFilter
+
+Config content:
+
+    AddHeadersFilter.header.MY_HEADER=header value
+
+Header can be changed with _prefixHeader_ parameter.
 
 ## Deploy to repository
 
-    mvn clean deploy -e -P ossrh
+    mvn clean deploy -e -P ossrh 

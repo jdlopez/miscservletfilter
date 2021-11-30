@@ -1,4 +1,4 @@
-package es.jdl.web;
+package es.jdl.utils;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterRegistration;
