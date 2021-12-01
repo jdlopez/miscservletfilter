@@ -10,8 +10,8 @@ import java.io.IOException;
 
 public class HeaderAuthenticationFilter implements Filter {
 
-    private static final String API_KEY_HEADER = "X-API-Key";
-    private static final String API_KEY_HEADER_RESPONSE = "X-API-Key-Response";
+    public static final String API_KEY_HEADER = "X-API-Key";
+    public static final String API_KEY_HEADER_RESPONSE = "X-API-Key-Response";
 
     private ExpandedProperties config = null;
     private ServletContext servletContext;
@@ -21,7 +21,7 @@ public class HeaderAuthenticationFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
          config = ServletUtils.buildConfig(filterConfig, this.getClass());
          servletContext = filterConfig.getServletContext();
-         prefixApiKey = config.getProperty("prefixApiKey", this.getClass().getName() + ".key.");
+         prefixApiKey = config.getProperty("prefixApiKey", this.getClass().getSimpleName() + ".key.");
     }
 
     @Override
@@ -35,7 +35,7 @@ public class HeaderAuthenticationFilter implements Filter {
             response.addHeader(API_KEY_HEADER_RESPONSE, authValue);
             chain.doFilter(servletRequest, servletResponse);
         } else {
-            unauthorized(response, "Bad credentials");
+            unauthorized(response);
         }
 
     }
@@ -47,7 +47,7 @@ public class HeaderAuthenticationFilter implements Filter {
 
     private void unauthorized(HttpServletResponse response, String message) throws IOException {
         servletContext.log("unauthorized: " + message);
-        response.setHeader("WWW-Authenticate", "HEADER " + API_KEY_HEADER);
+        //response.setHeader("WWW-Authenticate", "HEADER " + API_KEY_HEADER);
         response.sendError(401, message);
     }
 

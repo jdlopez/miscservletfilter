@@ -28,11 +28,11 @@ public class ServletUtils {
         ExpandedProperties ret = null;
         String configFile = filterConfig.getInitParameter(PARAM_CONFIG_FILE);
         if (configFile == null)
-            configFile = filterConfig.getServletContext().getInitParameter(aClass.getName() + "." + PARAM_CONFIG_FILE);
+            configFile = filterConfig.getServletContext().getInitParameter(aClass.getSimpleName() + "." + PARAM_CONFIG_FILE);
         if (configFile == null) {
-            URL r = aClass.getResource("/" + aClass.getName() + ".properties");
+            URL r = aClass.getResource("/" + aClass.getSimpleName() + ".properties");
             if (r == null)
-                throw new ServletException("Can't load configuration with file nor class resource: /" + aClass.getName() + ".properties");
+                throw new ServletException("Can't load configuration with file nor class resource: /" + aClass.getSimpleName() + ".properties");
             else {
                 try {
                     ret = new ExpandedProperties(Files.newInputStream(Paths.get(r.toURI())));
@@ -64,10 +64,11 @@ public class ServletUtils {
             ret = new ExpandedProperties(new Properties());
         }
         Enumeration<String> names = filterConfig.getInitParameterNames();
-        while (names.hasMoreElements()) {
-            String n = names.nextElement();
-            ret.setProperty(n, filterConfig.getInitParameter(n));
-        } // while
+        if (names != null)
+            while (names.hasMoreElements()) {
+                String n = names.nextElement();
+                ret.setProperty(n, filterConfig.getInitParameter(n));
+            } // while
         // not very efficient expanded many times...
         ret.expand(System.getProperties());
         return ret;
