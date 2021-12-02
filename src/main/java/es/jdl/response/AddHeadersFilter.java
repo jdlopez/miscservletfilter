@@ -21,7 +21,7 @@ public class AddHeadersFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         config = ServletUtils.buildConfig(filterConfig, this.getClass());
         servletContext = filterConfig.getServletContext();
-        String prefixHeader = config.getProperty("prefixHeader", this.getClass().getName() + ".header.");
+        String prefixHeader = config.getProperty("prefixHeader", this.getClass().getSimpleName() + ".header.");
         for (String s: config.stringPropertyNames()) {
             if (s.startsWith(prefixHeader))
                 headers.setProperty(s.substring(prefixHeader.length()), config.getProperty(s));

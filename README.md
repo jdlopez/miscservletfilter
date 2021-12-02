@@ -1,3 +1,5 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.jdlopez/miscservletfilter/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.jdlopez/miscservletfilter)
+
 # Collection of Servlet Filter
 
 A little collection of useful servlet filters:
@@ -14,7 +16,7 @@ First add this to your pom.xml
     <dependency>
         <groupId>io.github.jdlopez</groupId>
         <artifactId>miscservletfilter</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </dependency>
     
 Each filter has its own configuration set. 
