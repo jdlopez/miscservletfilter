@@ -6,7 +6,7 @@
 
     <groupId>io.github.jdlopez</groupId>
     <artifactId>miscservletfilter</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>Collection of Servlet Filter: basicauth, analytics, responseadd and others</name>
     <description>Collection of Servlet filter:
         Very basic authentication filter. Suitable for Spring Boot REST services without servlet-engine configuration.
