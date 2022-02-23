@@ -6,11 +6,12 @@
 
     <groupId>io.github.jdlopez</groupId>
     <artifactId>miscservletfilter</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Collection of Servlet Filter: basicauth, analytics, responseadd and others</name>
     <description>Collection of Servlet filter:
         Very basic authentication filter. Suitable for Spring Boot REST services without servlet-engine configuration.
         Add registration of api calls (or any servlet call) into Google Analytics Measurement Protocol.
+        Block filter some kind of last defense servlet-firewall agains DDoS attacks
     </description>
     <url>https://github.com/jdlopez/miscservletfilter</url>
 

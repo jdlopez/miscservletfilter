@@ -8,15 +8,16 @@ A little collection of useful servlet filters:
 * [Basic Authentication](auth.md)
 * [ApiKey Authentication](#apikey-authentication)
 * [Response Headers](#addheadersfilter)
+* [Block](#block-filter)
 
 ## Configuration
 
-First add this to your pom.xml
+First add this to your pom.xml (double check version number with badge)
 
     <dependency>
         <groupId>io.github.jdlopez</groupId>
         <artifactId>miscservletfilter</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </dependency>
     
 Each filter has its own configuration set. 
@@ -26,6 +27,7 @@ Check filter code before use:
 * es.jdl.auth.BasicAuthenticationFilter
 * es.jdl.auth.HeaderAuthenticationFilter
 * es.jdl.response.AddHeadersFilter
+* es.jdl.security.BlockingFilter
 
 ## Common configuration
 
@@ -50,6 +52,14 @@ Config content:
     AddHeadersFilter.header.MY_HEADER=header value
 
 Header can be changed with _prefixHeader_ parameter.
+
+## Block Filter
+
+Config content:
+
+    BlockingFilter.intervalMillis=Max Interval between hits from same IP in millis. Default 1h 
+    BlockingFilter.globalMaxRequest=Max number of hits  from same IP in interval. Default 1000
+    BlockingFilter.globalMaxSize=IP table max size. To reduce memory allocation
 
 ## Deploy to repository
 

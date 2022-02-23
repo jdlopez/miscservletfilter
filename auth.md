@@ -9,17 +9,9 @@ Filter parameters could provide credentials repository
 * **credentialsFile**: Credentials file, a properties file with user=pass. Could be external file or resource file. Checked in that order
 * **one user-password**: Use **user** and **password** parameters
 
-No encription at all. Use with caution.
+_**No encription at all. Use with caution.**_
 
-## Usage
-
-Add dependency to maven pom.xml:
-
-    <dependency>
-        <groupId>io.github.jdlopez</groupId>
-        <artifactId>basicauthfilter</artifactId>
-        <version>1.0.0</version>
-    </dependency>
+First look at [README](README.md) to add maven dependency.
 
 Add servlet filter and configure it. This is a spring-boot sample:
 
