@@ -64,3 +64,9 @@ Config content:
 ## Deploy to repository
 
     mvn clean deploy -e -P ossrh 
+
+## News
+
+* 1.1.0
+ 
+Added some mapping utils: [BeanMapper.java](src/main/java/es/jdl/utils/BeanMapper.java)

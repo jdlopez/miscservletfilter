@@ -38,6 +38,8 @@ This are filter's configuration init parameters:
 ## Google analytics API:
 
     https://developers.google.com/analytics/devguides/collection/protocol/v1/reference
+    
+    https://developers.google.com/analytics/devguides/collection/protocol/v1/devguide
 
 ## Java JDK11 HTTP async client
 
