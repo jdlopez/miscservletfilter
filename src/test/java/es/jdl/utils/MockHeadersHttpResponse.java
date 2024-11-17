@@ -1,8 +1,8 @@
 package es.jdl.utils;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -83,16 +83,6 @@ public class MockHeadersHttpResponse implements HttpServletResponse {
     }
 
     @Override
-    public String encodeUrl(String url) {
-        return null;
-    }
-
-    @Override
-    public String encodeRedirectUrl(String url) {
-        return null;
-    }
-
-    @Override
     public void sendError(int sc, String msg) throws IOException {
 
     }
@@ -109,11 +99,6 @@ public class MockHeadersHttpResponse implements HttpServletResponse {
 
     @Override
     public void setStatus(int sc) {
-
-    }
-
-    @Override
-    public void setStatus(int sc, String sm) {
 
     }
 

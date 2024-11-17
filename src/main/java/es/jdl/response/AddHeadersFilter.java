@@ -3,8 +3,8 @@ package es.jdl.response;
 import es.jdl.utils.ExpandedProperties;
 import es.jdl.utils.ServletUtils;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Properties;
 

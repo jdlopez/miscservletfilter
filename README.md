@@ -17,7 +17,7 @@ First add this to your pom.xml (double check version number with badge)
     <dependency>
         <groupId>io.github.jdlopez</groupId>
         <artifactId>miscservletfilter</artifactId>
-        <version>1.0.2</version>
+        <version>2.0.0</version>
     </dependency>
     
 Each filter has its own configuration set. 
@@ -66,6 +66,10 @@ Config content:
     mvn clean deploy -e -P ossrh 
 
 ## News
+
+* 2.0.0
+
+Updated servlet-api to jakarta 6.0.0
 
 * 1.1.0
  
